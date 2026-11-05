@@ -11,11 +11,12 @@ import TableSongs from "./pages/ManageSongs/TableSongs";
 
 export default function App() {
   const { user } = useAuth();
+  const isAdmin = user?.roles?.includes("ROLE_ADMIN");
 
   return (
     <Router>
       <Routes>
-        {user ? (
+        {isAdmin ? (
           <>
             <Route element={<AppLayout />}>
               <Route index path="/" element={<Home />} />

@@ -5,6 +5,17 @@ export const register = async (userData) => {
   return response.data;
 };
 
+export const registerWebAdmin = async (userData, inviteCode) => {
+  const response = await authAxios.post(
+    "/api/auth/register/web-admin",
+    userData,
+    {
+      headers: { "X-Admin-Invite-Code": inviteCode },
+    }
+  );
+  return response.data;
+};
+
 export const loginWithCredentials = async (username, password) => {
   const response = await authAxios.post("/api/auth/login", {
     username,
